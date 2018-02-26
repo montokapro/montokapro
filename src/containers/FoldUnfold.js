@@ -11,92 +11,153 @@ const natBody = {
     '(a → Nat)'
   ],
   rows: [
-    [
-      '(a → a) → a →',
-      ''
-    ],
-    [
-      '(a → a) → (1 → a) →',
-      '(a → 1) → (a → a) →'
-    ], 
-    [
-      '(a → a) × (1 → a) →',
-      '(a → 1) × (a → a) →'
-    ],
-    [
-      '(a + 1 → a) →',
-      '(a → a + 1) →'
-    ],
-    [
-      '(Maybe a → a) →',
-      '(a → Maybe a) →'
-    ],
-    [
-      '(NatF a → a) →',
-      '(a → NatF a) →'
-    ]
+    {
+      comment: 'A natural number is defined as any number greater than zero (we will include zero as well). We can define natural numbers using peano arithmetic: a natural number is either zero or a successor to another natural number. We will denote this by saying "data NatF a = ZeroF | SuccF a", where \'F\' refers to \'functor\'.',
+      data: [
+        '(NatF a → a) →',
+        '(a → NatF a) →'
+      ]
+    },
+    {
+      comment: 'Using the Maybe monad is equivalent to using NatF. Maybe is defined as "Maybe a = Nothing | Just a"',
+      more: 'Natural numbers are defined as the fixed point applied to Maybe',
+      data: [
+        '(Maybe a → a) →',
+        '(a → Maybe a) →'
+      ]
+    },
+    {
+      comment: 'We can express natural numbers using algebraic structures. Here, the plus represents \'or\', and 1 represents the unit type, of which there is only one possibility.',
+      data: [
+        '(a + 1 → a) →',
+        '(a → a + 1) →'
+      ]
+    },
+    {
+      comment: 'We can distribute implication to divide our algebraic structure into two groups. Thus a natural number is defined as an object that constains two functions: a function from a natural number to a natural number, and a function that creates a natural number from nothing, consuming only time. When unfolding, we have a continuation that consumes zero returns nothing.',
+      data: [
+        '(a → a) × (1 → a) →',
+        '(a → 1) × (a → a) →'
+      ]
+    },
+    {
+      comment: 'We can use currying to transform products into implication.',
+      data: [
+        '(a → a) → (1 → a) →',
+        '(a → 1) → (a → a) →'
+      ]
+    },
+    {
+      comment: 'Instead of passing a constructor that creates zero, we can pass zero itself. So far, I am unsure if continuations can be simplified in a similar manner.',
+      data: [
+        '(a → a) → a →',
+        ''
+      ]
+    }    
   ]
 };
 
 const listBody = {
+  comment: 'A list is defined similarly to natural numbers. A list can be thought of as cells indexed by the natural numbers, where each cell can hold a value. Often the [ ] notation is used to denote lists. We can fold over a list to reduce it to a value, or unfold from a seed value to create an infinite list.',
   common: [
     '([a] → b)',
     '(b → [a])'
   ],
   rows: [
-    [
-      '(a → b → b) → b →',
-      ''
-    ],
-    [
-      '(a × b → b) → b →',
-      ''
-    ],
-    [
-      '(a × b → b) → (1 → b) →',
-      '(b → 1) → (b → a × b) →'
-    ], 
-    [
-      '(a × b → b) × (1 → b) →',
-      '(b → 1) × (b → a × b) →'
-    ],
-    [
-      '((a × b) + 1 → b) →',
-      '(b → (a × b) + 1) →'
-    ],
-    [
-      '(Maybe (a × b) → b) →',
-      '(b → Maybe (a × b)) →'
-    ],
-    [
-      '(ListF a b → b) →',
-      '(b → ListF a b) →'
-    ]
+    {
+      comment: 'We can define lists in the same manner as the lisp language. A list is either the empty list or a cons cell with a value and a pointer to another list. We will denote this by saying "data ListF a b = NilF | ConsF a b"',
+      data: [
+        '(ListF a b → b) →',
+        '(b → ListF a b) →'
+      ]
+    },
+    {
+      comment: 'Using the Maybe functor is equivalent to using ListF, when using a product type that represents the index and the value in a cell.',        
+      data: [
+        '(Maybe (a × b) → b) →',
+        '(b → Maybe (a × b)) →'
+      ],
+    },
+    {
+      comment: 'We can fully express lists using algebraic structures. Here, the times represents the product type, the plus represents the sum type, and 1 represents the unit type.',
+      data: [
+        '((a × b) + 1 → b) →',
+        '(b → (a × b) + 1) →'
+      ]
+    },
+    {
+      comment: 'After distributing the implication, we see two functions. For fold, we see a binary function and a supplier. For unfold, we see a consumer and step function',
+      data: [
+        '(a × b → b) × (1 → b) →',
+        '(b → 1) × (b → a × b) →'
+      ]
+    },
+    {
+      comment: 'We can apply currying again.',
+      data: [
+        '(a × b → b) → (1 → b) →',
+        '(b → 1) → (b → a × b) →'
+      ]
+    },
+    {
+      comment: 'After removing the unit type we get a weaker but common representation of unfold, which takes a binary function, a seed value, and a list, then returns a value. It is unclear to me what removing the unit type implies for unfold.',
+      data: [
+        '(a × b → b) → b →',
+        ''
+      ]
+    },
+    {
+      comment: 'We can apply currying one more time.',      
+      data: [
+        '(a → b → b) → b →',
+        ''
+      ]
+    }
   ]
 };
 
 const treeBody = {
+  comment: 'TODO: Several kinds of trees exist. This tree is specifically a binary tree, where only the leaves contain values. We can fold over a tree to reduce it to a value, or unfold from a seed value to create an infinite tree.',
   common: [
     '(T a → b)',
     '(b → T a)'
   ],
   rows: [
-    [
-      '(b → b → b) → (a → b) →',
-      '(b → b → b) → (b → a) →'
-    ],
-    [
-      '(b × b → b) × (a → b) →',
-      '(b → b x b) × (b → a) →'
-    ],
-    [
-      '((b × b) + a → b) →',
-      '(b → (b × b) + a) →'
-    ], 
-    [
-      '(Either a (b × b) → b) →',
-      '(b → Either a (b × b)) →'
-    ]
+    {
+      comment: 'A binary tree is either a leaf with a value or a node that points to two trees. We will denote this by saying "data ListF a b = LeafF a | BranchF b b"',
+      data: [
+        '(ListF a b → b) →',
+        '(b → ListF a b) →'
+      ]
+    },
+    {
+      comment: 'We can use a product type to represent branches, and use the Either monad.',
+      data: [
+        '(Either a (b × b) → b) →',
+        '(b → Either a (b × b)) →'
+      ]
+    },
+    {
+      comment: 'We can express binary trees entirely through algebraic data types.',
+      data: [
+        '((b × b) + a → b) →',
+        '(b → (b × b) + a) →'
+      ]
+    },
+    {
+      comment: 'We can distribute implication accross a product.',
+      data: [
+        '(b × b → b) × (a → b) →',
+        '(b → b x b) × (b → a) →'
+      ]
+    },
+    {
+      comment: 'We can curry away the product type.',
+      data: [
+        '(b → b → b) → (a → b) →',
+        '(b → b → b) → (b → a) →'
+      ]
+    }
   ]
 };
 

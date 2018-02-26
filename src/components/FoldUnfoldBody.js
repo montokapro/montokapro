@@ -23,11 +23,11 @@ const RSpan = styled.span`
 
 export default (({ body }) => (
   <tbody>
-    {body.rows.map((columns, rowIndex) => (
+    {body.rows.map((row, rowIndex) => (
       <TableRow key={rowIndex}>
         {body.common.map((value, columnIndex) => (
           <th key={columnIndex}>
-            <LSpan>{columns[columnIndex]}</LSpan>
+            <LSpan>{row.data[columnIndex]}</LSpan>
             <RSpan>{value}</RSpan>
           </th>
         ))}
