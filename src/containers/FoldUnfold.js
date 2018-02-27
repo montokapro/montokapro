@@ -1,9 +1,10 @@
 
 import React from 'react'
-import { withRouteData, Link } from 'react-static'
 import styled from 'styled-components'
 import FoldUnfoldBody from '../components/FoldUnfoldBody';
 //
+
+const description = 'To perform a fold operation, you need to pass an F-algebra which has a morphism of the form \'F a → a\'. To perform an unfold, you need to pass an F-coalgebra which has a morphism of the form \'a → F a\'. In both cases, F represents an functor that can be mapped across.'
 
 const natBody = {
   common: [
@@ -303,6 +304,8 @@ export default () => (
       </thead>
     </Table>
 
+    <p>{description}</p>
+
     <H2>Naturals</H2>
     <Table>
       <FoldUnfoldBody body={natBody}/>
@@ -370,6 +373,7 @@ export default () => (
     </Table>
 
     <H1>References</H1>
+    <p><a>https://en.wikipedia.org/wiki/F-algebra</a></p>
     <p><a>http://conal.net/talks/folds-and-unfolds.pdf</a></p>
     <p><a>https://en.wikipedia.org/wiki/Hylomorphism_(computer_science)</a></p>
     <p><a>https://gist.github.com/yuwki0131/db2dcc08d8b6b086d055182dc32c0300</a></p>
