@@ -7,6 +7,7 @@ import FoldUnfoldBody from '../components/FoldUnfoldBody';
 const description = 'To perform a fold operation, you need to pass an F-algebra which has a morphism of the form \'F a → a\'. To perform an unfold, you need to pass an F-coalgebra which has a morphism of the form \'a → F a\'. In both cases, F represents an functor that can be mapped across.'
 
 const natBody = {
+  name: 'Naturals',
   common: [
     '(Nat → a)',
     '(a → Nat)'
@@ -59,6 +60,7 @@ const natBody = {
 };
 
 const listBody = {
+  name: 'Lists',
   comment: 'A list is defined similarly to natural numbers. A list can be thought of as cells indexed by the natural numbers, where each cell can hold a value. Often the [ ] notation is used to denote lists. We can fold over a list to reduce it to a value, or unfold from a seed value to create an infinite list.',
   common: [
     '([a] → b)',
@@ -118,6 +120,7 @@ const listBody = {
 };
 
 const treeBody = {
+  name: 'Trees',
   comment: 'TODO: Several kinds of trees exist. This tree is specifically a binary tree, where only the leaves contain values. We can fold over a tree to reduce it to a value, or unfold from a seed value to create an infinite tree.',
   common: [
     '(T a → b)',
@@ -306,20 +309,11 @@ export default () => (
 
     <p>{description}</p>
 
-    <H2>Naturals</H2>
-    <Table>
-      <FoldUnfoldBody body={natBody}/>
-    </Table>
+    <FoldUnfoldBody body={natBody}/>
 
-    <H2>Lists</H2>
-    <Table>
-      <FoldUnfoldBody body={listBody}/>
-    </Table>
+    <FoldUnfoldBody body={listBody}/>
     
-    <H2>Trees</H2>
-    <Table>
-      <FoldUnfoldBody body={treeBody}/>
-    </Table>
+    <FoldUnfoldBody body={treeBody}/>
 
     <H1>Hylomorphisms</H1>
     <p>hylo f g = fold f . unfold g = unfold g ; fold f</p>
