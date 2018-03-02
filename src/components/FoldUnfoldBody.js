@@ -1,6 +1,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import FoldUnfoldRow from '../components/FoldUnfoldRow';
 
 const Div = styled.div`
 
@@ -48,14 +49,8 @@ export default (({ body }) => (
   <Div>
     <Header>{body.name}</Header>
     {body.rows.map((row, rowIndex) => (
-      <Row key={rowIndex}>
-        {body.common.map((value, columnIndex) => (
-          <Cell key={columnIndex}>
-            <Unique>{row.data[columnIndex]}</Unique>
-            <Common>{value}</Common>
-          </Cell>
-        ))}
-      </Row>
+      <FoldUnfoldRow key={rowIndex}
+        common={body.common} unique={row.data} comment={row.comment}/>
     ))}
   </Div>
 ))
