@@ -1,6 +1,5 @@
-
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import FoldUnfoldRow from '../components/FoldUnfoldRow';
 
 const Div = styled.div`

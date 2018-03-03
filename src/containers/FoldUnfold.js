@@ -1,10 +1,10 @@
 
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import FoldUnfoldHeader from '../components/FoldUnfoldHeader';
 import FoldUnfoldBody from '../components/FoldUnfoldBody';
-//
 
-const description = 'To perform a fold operation, you need to pass an F-algebra which has a morphism of the form \'F a → a\'. To perform an unfold, you need to pass an F-coalgebra which has a morphism of the form \'a → F a\'. In both cases, F represents an functor that can be mapped across.'
+const background = 'Folds are recognizable to most programmers as <a>MapReduce</a>. However, the full power of folds and their neglected sibling unfold is likely unharnessed by most programmers. This chart is meant to express dualities and correlations in a succinct manner, though you may drill down in any section by clicking for context.'
 
 const natBody = {
   name: 'Naturals',
@@ -130,8 +130,8 @@ const treeBody = {
     {
       comment: 'A binary tree is either a leaf with a value or a node that points to two trees. We will denote this by saying "data ListF a b = LeafF a | BranchF b b"',
       data: [
-        '(ListF a b → b) →',
-        '(b → ListF a b) →'
+        '(TreeF a b → b) →',
+        '(b → TreeF a b) →'
       ]
     },
     {
@@ -298,21 +298,12 @@ const H3 = styled.h3`
 
 export default () => (
   <Div>
-    <Table>
-      <thead>
-        <tr>
-          <th><H1>Fold</H1></th>
-          <th><H1>Unfold</H1></th>
-        </tr> 
-      </thead>
-    </Table>
+    <FoldUnfoldHeader/>
 
-    <p>{description}</p>
+    <p>{background}</p>
 
     <FoldUnfoldBody body={natBody}/>
-
     <FoldUnfoldBody body={listBody}/>
-    
     <FoldUnfoldBody body={treeBody}/>
 
     <H1>Hylomorphisms</H1>

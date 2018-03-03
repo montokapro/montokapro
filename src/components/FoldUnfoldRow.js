@@ -1,7 +1,6 @@
-
-import React from 'react'
-import styled from 'styled-components'
-import Collapse from 'react-collapse'
+import React from 'react';
+import styled from 'styled-components';
+import Collapse from 'react-collapse';
 
 const Div = styled.div`
   
@@ -11,6 +10,7 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  cursor: pointer;
 
   // &:nth-child(even) {
   //   background-color: #f2f2f2;
@@ -22,6 +22,7 @@ const Cell = styled.div`
   flex-grow: 1;
   flex-direction: row;
   justify-content: space-between;
+  width: 50%;
 `;
 
 const Unique = styled.pre`
@@ -41,7 +42,7 @@ const Comment = styled.p`
   background-color: #f2f2f2;
   margin: 0;
   padding: 4px;
-`
+`;
 
 export default class extends React.Component {
   constructor(props) {
