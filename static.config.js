@@ -18,22 +18,12 @@ export default {
         component: 'src/containers/About',
       },
       {
-        path: '/blog',
-        component: 'src/containers/Blog',
-        getData: () => ({
-          posts,
-        }),
-        children: posts.map(post => ({
-          path: `/post/${post.id}`,
-          component: 'src/containers/Post',
-          getData: () => ({
-            post,
-          }),
-        })),
+        path: '/algebra',
+        component: 'src/containers/Algebra',
       },
       {
-        path: '/fold-unfold',
-        component: 'src/containers/FoldUnfold',
+        path: '/fold',
+        component: 'src/containers/Fold',
       },
       {
         is404: true,

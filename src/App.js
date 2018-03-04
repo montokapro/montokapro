@@ -49,8 +49,8 @@ const App = () => (
       <nav>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/fold-unfold">Fold | Unfold</Link>
+        <Link to="/algebra">Algebra</Link>
+        <Link to="/fold">Fold</Link>
       </nav>
       <div className="content">
         <Routes />

@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Collapse from 'react-collapse';
-import FoldUnfoldRow from '../components/FoldUnfoldRow';
+import FoldUnfoldRow from './Row';
 
 const foldComment = 'A fold is an operation that transforms one algebra to another. An algebra has a morphism of the form \'F a → a\'. F represents an functor that can be mapped across (as in map reduce). Folding is often called reducing.';
 const unfoldComment = 'An unfold is an operation that transforms one coalgebra to another. A coalgebra has a morphism of the form \'a → F a\'. F represents an functor that can be mapped across (as in map reduce). Unfolding is the dual of reducing';
