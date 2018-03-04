@@ -7,7 +7,7 @@ const Div = styled.div`
 `;
 
 const Less = styled.pre`
-  white-space: nowrap;
+  background-color: #ffffff;
   margin: 0;
   padding: 4px;
 `;

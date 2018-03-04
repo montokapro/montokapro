@@ -22,13 +22,15 @@ export default (({ body }) => (
   <Div>
     <HeaderRow columns={body.header}/>
     {body.rows && body.rows.map((row, index) => (
-      <Row key={index} columns={row.data}/>
+      <Row key={index} comment={row.comment} columns={row.data}/>
     ))}
     {body.rows &&
       <div>
         <Less>References</Less>
         {body.references.map((reference, index) => (
-          <More key={index}>{reference}</More>
+          <More key={index}>
+            <a href={reference.link}>{reference.name}</a>
+          </More>
         ))}
       </div>
     }

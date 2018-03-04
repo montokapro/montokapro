@@ -18,9 +18,18 @@ const algebra = {
   ],
   more: 'Specifically, we are defining F-algebras and F-coalgebras here. We will be analyzing initial F-algebras and terminal F-coalgebras.',
   references: [
-    'http://www.cl.cam.ac.uk/archive/mjcg/plans/Coinduction.html#algebras-and-coalgebras',
-    'https://en.wikipedia.org/wiki/F-algebra',
-    'https://hackage.haskell.org/package/morte-1.6.15/docs/Morte-Tutorial.html'
+    {
+      name: 'Mike Gordon: Coinduction - Algebras and coalgebras',
+      link: 'http://www.cl.cam.ac.uk/archive/mjcg/plans/Coinduction.html#algebras-and-coalgebras'
+    },
+    {
+      name: 'Wikipedia: F-algebra',
+      link: 'https://en.wikipedia.org/wiki/F-algebra'
+    },
+    {
+      name: 'Gabriel Gonzalez: Morte Tutorial',
+      link: 'https://hackage.haskell.org/package/morte-1.6.15/docs/Morte-Tutorial.html'
+    }
   ],
   rows: [
     {
@@ -59,13 +68,19 @@ const natural = {
   ],
   more: 'The common definitions of naturals and conaturals exclude zero and infinity. We will consider these differences akin to zero vs one indexing.',
   references: [
-    'http://www.cl.cam.ac.uk/archive/mjcg/plans/Coinduction.html#numbers-and-conumbers',
-    'https://en.wikipedia.org/wiki/Natural_number'
+    {
+      name: 'Mike Gordon: Coinduction - Numbers and conumbers',
+      link: 'http://www.cl.cam.ac.uk/archive/mjcg/plans/Coinduction.html#numbers-and-conumbers'
+    },
+    {
+      name: 'Gabriel Gonzalez: Morte Tutorial',
+      link: 'https://hackage.haskell.org/package/morte-1.6.15/docs/Morte-Tutorial.html'
+    }
   ],
   todo: 'Should we rewrite descriptions to use one and \'co-one\' instead?',
   rows: [
     {
-      comment: 'We can define a functor for natural numbers in Haskell by saying "data NatF a = ZeroF | SuccF a". Here, the pipe represents \'or\'',
+      comment: 'We can define a functor for natural numbers in Haskell by saying "data NatF a = ZeroF | SuccF a". Here, the pipe represents \'or\'.',
       data: [
         {
           name: 'NatF a → a',
@@ -78,7 +93,7 @@ const natural = {
       ]
     },
     {
-      comment: 'Using the Maybe monad is equivalent to using NatF. Maybe is defined as "data Maybe a = Nothing | Just a". Again, the pipe represents \'or\'',
+      comment: 'Using the Maybe monad is equivalent to using NatF. Maybe is defined as "data Maybe a = Nothing | Just a". Again, the pipe represents \'or\'.',
       data: [
         {
           name: 'Maybe a → a',
@@ -165,11 +180,14 @@ const list = {
     }
   ],
   references: [
-    'https://hackage.haskell.org/package/morte-1.6.15/docs/Morte-Tutorial.html'
+    {
+      name: 'Gabriel Gonzalez: Morte Tutorial',
+      link: 'https://hackage.haskell.org/package/morte-1.6.15/docs/Morte-Tutorial.html'
+    }
   ],
   rows: [
     {
-      comment: 'We can define lists in the same manner as the lisp language. A list is either the empty list or a cons cell with a value and a pointer to another list. We will denote this by saying "data ListF a b = NilF | ConsF a b"',
+      comment: 'We can define lists in the same manner as the lisp language. A list is either the empty list or a cons cell with a value and a pointer to another list. We will denote this by saying "data ListF a b = NilF | ConsF a b".',
       data: [
         {
           name: 'ListF a b → b',
@@ -202,7 +220,7 @@ const list = {
       ]
     },
     {
-      comment: 'After distributing the implication, we see two functions. For fold, we see a binary function and a supplier. For unfold, we see a consumer and step function',
+      comment: 'After distributing the implication, we see two functions. For fold, we see a binary function and a supplier. For unfold, we see a consumer and step function.',
       data: [
         {
           name: '(a × b → b) × (1 → b)',
