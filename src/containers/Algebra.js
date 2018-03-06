@@ -27,12 +27,13 @@ const algebra = {
       link: 'https://en.wikipedia.org/wiki/F-algebra'
     },
     {
-      name: 'Gabriel Gonzalez: Morte Tutorial',
-      link: 'https://hackage.haskell.org/package/morte-1.6.15/docs/Morte-Tutorial.html'
+      name: 'Gabriel Gonzalez: Morte Tutorial - Simple Types',
+      link: 'https://hackage.haskell.org/package/morte-1.6.15/docs/Morte-Tutorial.html#g:4'
     }
   ],
   rows: [
     {
+      comment: 'Our data structures will resemble the following forms. We will be substituting "F a" with a variety of terms.',
       data: [
         {
           name: 'F a → a',
@@ -73,48 +74,48 @@ const natural = {
       link: 'http://www.cl.cam.ac.uk/archive/mjcg/plans/Coinduction.html#numbers-and-conumbers'
     },
     {
-      name: 'Gabriel Gonzalez: Morte Tutorial',
-      link: 'https://hackage.haskell.org/package/morte-1.6.15/docs/Morte-Tutorial.html'
+      name: 'Gabriel Gonzalez: Morte Tutorial - Recursion',
+      link: 'https://hackage.haskell.org/package/morte-1.6.15/docs/Morte-Tutorial.html#g:6'
     }
   ],
   todo: 'Should we rewrite descriptions to use one and \'co-one\' instead?',
   rows: [
     {
-      comment: 'We can define a functor for natural numbers in Haskell by saying "data NatF a = ZeroF | SuccF a". Here, the pipe represents \'or\'.',
+      comment: 'We can declare a functor that represents our structure. The difference between NatF and ConatF is purely nominal.',
       data: [
         {
           name: 'NatF a → a',
-          comment: 'Natural numbers are defined as the least fixed point applied to NatF',
+          comment: 'We can define naturals in Haskell by declaring "data NatF a = ZeroF | SuccF a".',
         },
         {
           name: 'a → ConatF a',
-          comment: 'Conatural numbers are defined as the greatest fixed point applied to NatF',
+          comment: 'We can define conaturals in Haskell by declaring "data ConatF a = ZeroF | PredF a".',
         }
       ]
     },
     {
-      comment: 'Using the Maybe monad is equivalent to using NatF. Maybe is defined as "data Maybe a = Nothing | Just a". Again, the pipe represents \'or\'.',
+      comment: 'Using the Maybe monad is equivalent to using NatF or ConatF. Maybe is defined as "data Maybe a = Nothing | Just a".',
       data: [
         {
           name: 'Maybe a → a',
-          comment: 'Natural numbers are defined as the least fixed point applied to Maybe',
+          comment: 'Natural numbers are defined as the least fixed point applied to Maybe.',
         },
         {
           name: 'a → Maybe a',
-          comment: 'Conatural numbers are defined as the greatest fixed point applied to Maybe',
+          comment: 'Conatural numbers are defined as the greatest fixed point applied to Maybe.',
         }
       ]
     },
     {
-      comment: 'We can express our numbers using algebraic notation. Here, the plus represents \'or\' and the sum type. 1 represents the unit type, of which there is only one possibility.',
+      comment: 'We can express our numbers more succinctly using algebraic notation. Here, the plus represents \'or\' and the sum type. 1 represents the unit type, of which there is only one possibility.',
       data: [
         {
           name: 'a + 1 → a',
-          comment: 'Here we can clearly see that from a natural or zero we can generate another natural.',
+          comment: 'Here we can clearly see that from a natural or zero we can generate another natural. \'1\' represents the concept of zero here.',
         },
         {
           name: 'a → a + 1',
-          comment: 'Here we can clearly see that from a conatural we can extract another conatural or infinity.',
+          comment: 'Here we can clearly see that from a conatural we can extract another conatural or infinity. \'1\' represents the concept of infinity here.',
         }
       ]
     },
@@ -123,36 +124,36 @@ const natural = {
       data: [
         {
           name: '(a → a) × (1 → a)',
-          comment: 'We can create the structure for a natural by suppling two functions: a function to create a number from a number, and a constructor that supplies zero',
+          comment: 'We can create the structure for a natural by suppling two functions: a function to create a number from a number, and a constructor that supplies zero.',
         },
         {
-          name: '(a → 1) × (a → a)',
-          comment: 'We can create the structure for a conatural by suppling two functions: a function to create a number from a number, and a destructor that consumes infinity',
+          name: '(a → a) × (a → 1)',
+          comment: 'We can create the structure for a conatural by suppling two functions: a function to create a number from a number, and a destructor that consumes infinity.',
         }
       ]
     },
     {
-      comment: 'We can use currying to transform products into implication. This is how dependency injection and higher order functions work.',
+      comment: 'We can use currying to transform products into implication. This is how dependency injection and higher order functions are used.',
       data: [
         {
           name: '(a → a) → (1 → a)',
           comment: 'Most languages will not define naturals in this form, but they may define other structures using similar techniques.'
         },
         {
-          name: '(a → 1) → (a → a)',
+          name: '(a → a) → (a → 1)',
           comment: 'Most languages will not define conaturals in this form, but they may define other structures using similar techniques.'
         }
       ]
     },
     {
-      comment: 'Instead of passing a constructors or destructors, we can pass the zero number itself. Whether this is valid depends on the language itself.',
+      comment: 'Instead of passing a constructor or destructor, we can pass the zero number itself. This assumption must be baked into our interpreter. The same syntax can have two different meanings, depending on which interpreter is used.',
       data: [
         {
           name: '(a → a) → a',
           comment: 'This is how naturals are defined in the calculus of constructions. Here we assume that a supplier of a value is equivalent to the value itself.',
         },
         {
-          name: 'a → (a → a)',
+          name: '(a → a) → a',
           comment: 'This is how conaturals are defined in the dual to calculus of constructions. Here we assume that a consumer of a covalue is equivalent to the covalue itself.',
         }
       ]
@@ -181,24 +182,26 @@ const list = {
   ],
   references: [
     {
-      name: 'Gabriel Gonzalez: Morte Tutorial',
-      link: 'https://hackage.haskell.org/package/morte-1.6.15/docs/Morte-Tutorial.html'
+      name: 'Gabriel Gonzalez: Morte Tutorial - Recursion',
+      link: 'https://hackage.haskell.org/package/morte-1.6.15/docs/Morte-Tutorial.html#g:6'
     }
   ],
   rows: [
     {
-      comment: 'We can define lists in the same manner as the lisp language. A list is either the empty list or a cons cell with a value and a pointer to another list. We will denote this by saying "data ListF a b = NilF | ConsF a b".',
+      comment: 'We can define lists in the same manner as the lisp language. A list is either the empty list or a cons cell with a value and a pointer to another list. To distinguish betweens lists and streams, we will use the terms \'push\' and \'pop\' for lists and streams respectively',
       data: [
         {
           name: 'ListF a b → b',
+          comment: 'We can define lists in Haskell by declaring "data ListF a b = NilF | PushF a b".'
         },
         {
           name: 'b → StreamF a b',
+          comment: 'We can define streams in Haskell by declaring "data StreamF a b = NilF | PopF a b".'
         }
       ]
     },
     {
-      comment: 'Using the Maybe functor is equivalent to using ListF, when using a product type that represents the index and the value in a cell.',        
+      comment: 'Using the Maybe functor is equivalent to using ListF and StreamF, when using a product type that represents the index and the value in a cell.',
       data: [
         {
           name: 'Maybe (a × b) → b',
@@ -226,7 +229,7 @@ const list = {
           name: '(a × b → b) × (1 → b)',
         },
         {
-          name: '(b → 1) × (b → a × b)',
+          name: '(b → a × b) × (b → 1)',
         }
       ]
     },
@@ -237,19 +240,19 @@ const list = {
           name: '((a → b) → b) → (1 → b)',
         },
         {
-          name: '(b → 1) → (b → (a → b))',
+          name: '(b → (a → b)) → (b → 1)',
         }
       ]
     },
     {
-      comment: 'Instead of passing a constructors or destructors, we can pass the zero number itself. Whether this is valid depends on the language itself.',
+      comment: 'Instead of passing a constructor or destructor, we can pass empty itself. This assumption must be baked into our interpreter. The same syntax can have two different meanings, depending on which interpreter is used.',
       data: [
         {
           name: '((a → b) → b) → b',
           comment: 'This is how lists are defined in the calculus of constructions.',
         },
         {
-          name: 'b → ((a → b) → b)',
+          name: '(b → (a → b)) → b',
           comment: 'This is how streams are defined in the dual to calculus of constructions.',
         }
       ]

@@ -4,18 +4,18 @@ import HeaderRow from './HeaderRow';
 import Row from './Row';
 
 const Div = styled.div`
-  border: 4px solid #4CAF50;
+  border: 0.25em solid #4CAF50;
 `;
 
 const Less = styled.h3`
   margin: 0;
-  padding: 4px;
+  padding: 0.25em;
 `;
 
 const More = styled.div`
   background-color: #f2f2f2;
   margin: 0;
-  padding: 4px;
+  padding: 0.25em;
 `;
 
 export default (({ body }) => (

@@ -6,38 +6,48 @@ const Div = styled.div`
   width: 50%;
 `;
 
+const Padding = styled.div`
+  padding: 0.25em;
+`;
+
 const Less = styled.pre`
-  background-color: #ffffff;
-  margin: 0;
-  padding: 4px;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  padding: 0.25em;
 `;
 
 const More = styled.p`
+  margin: 0em;
   background-color: #f2f2f2;
-  margin: 0;
-  padding: 4px;
+  padding: 0.25em;
 `;
 
 export default class extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      expanded: false,
-    }
-    this.toggleExpanded = this.toggleExpanded.bind(this);
+    // this.state = {
+    //   expanded: false,
+    // }
+    // this.toggleExpanded = this.toggleExpanded.bind(this);
   }
 
-  toggleExpanded() {
-    this.setState({ expanded: !this.state.expanded });
-  }
+  // toggleExpanded() {
+    // this.setState({ expanded: !this.state.expanded });
+  // }
 
   render() {
     return (
-      <Div onClick={this.toggleExpanded}>
+      <Div>
         <Less>{this.props.less}</Less>
-        <Collapse isOpened={this.state.expanded}>
-          <More>{this.props.more}</More>
-        </Collapse>
+        {this.props.more &&
+          <Collapse isOpened={this.props.expanded}>
+            <Padding>
+              <More>{this.props.more}</More>
+            </Padding>
+          </Collapse>
+        }
       </Div>
     );
   }

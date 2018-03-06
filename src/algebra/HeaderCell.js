@@ -9,13 +9,13 @@ const Div = styled.div`
 const Less = styled.h2`
   text-align: center;
   margin: 0;
-  padding: 4px;
+  padding: 0.25em;
 `;
 
 const More = styled.p`
   background-color: #f2f2f2;
   margin: 0;
-  padding: 4px;
+  padding: 0.25em;
 `;
 
 export default class extends React.Component {
