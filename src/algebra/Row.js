@@ -16,7 +16,6 @@ const Padding = styled.div`
 `;
 
 const More = styled.p`
-  // margin: 0.25em;
   margin: 0;
   background-color: #f2f2f2;
   padding: 0.25em;

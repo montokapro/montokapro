@@ -7,6 +7,7 @@ const Div = styled.div`
   flex-direction: row;
   justify-content: space-between;
   cursor: pointer;
+  color: white;
 `;
 
 export default (({ columns }) => (

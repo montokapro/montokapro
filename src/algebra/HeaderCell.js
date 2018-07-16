@@ -4,6 +4,7 @@ import Collapse from 'react-collapse';
 
 const Div = styled.div`
   width: 50%;
+  background: #108db8;
 `;
 
 const Less = styled.h2`
@@ -13,7 +14,6 @@ const Less = styled.h2`
 `;
 
 const More = styled.p`
-  background-color: #f2f2f2;
   margin: 0;
   padding: 0.25em;
 `;

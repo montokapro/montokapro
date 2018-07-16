@@ -4,7 +4,6 @@ import HeaderRow from './HeaderRow';
 import Row from './Row';
 
 const Div = styled.div`
-  border: 0.25em solid #4CAF50;
 `;
 
 const Less = styled.h3`
