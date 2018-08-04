@@ -48,9 +48,9 @@ const App = () => (
     <AppStyles>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
         <Link to="/algebra">Algebra</Link>
         <Link to="/fold">Fold</Link>
+	<Link to="/links">Links</Link>
       </nav>
       <div className="content">
         <Routes />

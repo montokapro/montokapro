@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import FoldUnfoldHeader from '../fold/Header';
 import FoldUnfoldBody from '../fold/Body';
 
-const background = 'Folds are recognizable to most programmers as <a>MapReduce</a>. However, the full power of folds and their neglected sibling unfold is likely unharnessed by most programmers. This chart is meant to express dualities and correlations in a succinct manner, though you may drill down in any section by clicking for context.'
+const background = 'Folds are recognizable to most programmers as MapReduce. However, the full power of folds and their neglected sibling unfold is likely unharnessed by most programmers. This chart is meant to express dualities and correlations in a succinct manner, though you may drill down in any section by clicking for context.'
 
 const natBody = {
   name: 'Naturals',

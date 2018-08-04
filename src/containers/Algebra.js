@@ -5,6 +5,8 @@ import Body from '../algebra/Body';
 
 const comment = 'Algebras are recognizable to most programmers only as what they were taught in grade school. By using the very same properties, we can create structures we know and love, as well as discover a few more. Each of these charts defines a concept, and then iterates on that concept starting with Haskell and ending with algebraic encodings.'
 
+const instructions = 'To use this chart, try clicking a header or row.'
+
 const algebra = {
   header: [
     {
@@ -176,7 +178,7 @@ const natural = {
   todo: 'Should we rewrite descriptions to use one and \'co-one\' instead?',
   rows: [
     {
-      comment: 'We can declare a functor that represents our structure. The difference between NatF and ConatF is purely nominal.',
+      comment: 'We can declare a functor that represents our structure. The difference between NatF and ConatF is purely nominal. The only difference is whether we take the least fixed point (natural) or greatest fixed point (conatural) of our functor.',
       data: [
         {
           name: 'NatF a → a',
@@ -241,15 +243,15 @@ const natural = {
       ]
     },
     {
-      comment: 'Instead of passing a constructor or destructor, we can pass the zero number itself. This assumption must be baked into our interpreter. The same syntax can have two different meanings, depending on which interpreter is used.',
+      comment: 'Instead of passing a constructor or destructor, we can pass the zero number itself. This assumption must be baked into our interpreter. The same syntax can have two different meanings, depending on what interpreter is used to read the statement.',
       data: [
         {
           name: '(a → a) → a',
-          comment: 'This is how naturals are defined in the calculus of constructions. We arrive here by assuming that a supplier of a value is equivalent to the value itself.',
+          comment: 'This is how naturals are defined in the calculus of constructions. We arrive here by assuming that a supplier of a value is equivalent to the value itself. The statement shows that the natural type takes a successor function \'a → a\' and a zero value \'a\'',
         },
         {
           name: '(a → a) → a',
-          comment: 'This is how conaturals are defined in the dual to calculus of constructions. We arrive here by assuming that a consumer of a covalue is equivalent to the covalue itself.',
+          comment: 'This is how conaturals are defined in the dual to calculus of constructions. We arrive here by assuming that a consumer of a covalue is equivalent to the covalue itself. The statement shows that the conatural type takes a predecessor function \'a → a\' and an infinity value \'a\'',
         }
       ]
     }
@@ -283,7 +285,7 @@ const list = {
   ],
   rows: [
     {
-      comment: 'We can define lists in the same manner as the lisp language. A list is either the empty list or a cons cell with a value and a pointer to another list. To distinguish betweens lists and streams, we will use the terms \'push\' and \'pop\' for lists and streams respectively',
+      comment: 'We can define lists in the same manner as the lisp language. A list is either the empty list or a cons cell with a value and a pointer to another list. To distinguish betweens lists and streams, we will use the terms \'push\' and \'pop\' for lists and streams respectively.',
       data: [
         {
           name: 'ListF a b → b',
@@ -492,9 +494,13 @@ const H3 = styled.h3`
   color: white;
 `;
 
+const Instructions = styled.span`
+  font-weight:bold;
+`;
+
 export default () => (
   <Div>
-    <p>{comment}</p>
+    <p>{comment} <Instructions>{instructions}</Instructions></p>
 
     <Body body={algebra}/>
     <Body body={natural}/>

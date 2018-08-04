@@ -14,16 +14,16 @@ export default {
         component: 'src/containers/Home',
       },
       {
-        path: '/about',
-        component: 'src/containers/About',
-      },
-      {
         path: '/algebra',
         component: 'src/containers/Algebra',
       },
       {
         path: '/fold',
         component: 'src/containers/Fold',
+      },
+      {
+        path: '/links',
+        component: 'src/containers/Links',
       },
       {
         is404: true,
